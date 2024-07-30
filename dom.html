@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>랜덤 고양이 사진</title>
+  </head>
+  <body>
+    <div id="imageContainer"></div>
+
+    <script>
+      let API_URL = `https://api.thecatapi.com/v1/images/search`;
+
+      let options = {
+        method: "GET",
+        headers: {
+          accept: "application/json",
+          "x-api-key":
+            "live_8GfbTk0GMtgRdbxUB7XcuYzuMmfShEHGHNSnDo26DDgJDVUHDWqzJ25rJKpsSqud",
+        },
+      };
+
+      fetch(API_URL, options)
+        .then((response) => response.json())
+        .then((data) => {
+          const $imageContainer = document.querySelector("#imageContainer");
+
+          const $img = document.createElement("img");
+          $img.src = data[0].url;
+
+          $imageContainer.appendChild($img);
+        });
+
+      // API_URL 과 options를 사용해 fetch 로 API 요청을 한 후, 해당 데이터를 통해 img 태그를 생성하여 주세요.
+    </script>
+  </body>
+</html>
